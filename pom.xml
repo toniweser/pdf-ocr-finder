@@ -12,6 +12,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <kotlin.code.style>official</kotlin.code.style>
         <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
+        <ktlint.sourcesIncludes>src/**/*.kt</ktlint.sourcesIncludes>
     </properties>
 
     <repositories>
@@ -60,6 +61,25 @@
                 <version>1.6.0</version>
                 <configuration>
                     <mainClass>MainKt</mainClass>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.github.gantsign.maven</groupId>
+                <artifactId>ktlint-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>check</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <sourcesIncludes>${ktlint.sourcesIncludes}</sourcesIncludes>
+                    <sourceRoots>${project.basedir}</sourceRoots>
+                    <includeScripts>false</includeScripts>
+                    <includeTestSources>false</includeTestSources>
                 </configuration>
             </plugin>
         </plugins>
